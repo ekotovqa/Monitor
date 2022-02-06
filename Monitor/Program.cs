@@ -33,7 +33,7 @@ namespace Monitor
         {
             await Task.Run(() =>
             {
-                using (var sw = new StreamWriter("log.txt", true, Encoding.UTF8))
+                using (var sw = new StreamWriter("Monitorlog.txt", true, Encoding.UTF8))
                 {
                     sw.WriteLine($"\n{DateTime.Now} Запуск {processName} {lifeTime} {checkInterval}");
                 }
@@ -43,7 +43,7 @@ namespace Monitor
                     {
                         if (process.ProcessName == processName && DateTime.Now > process.StartTime.AddMinutes(lifeTime))
                         {
-                            using (var sw = new StreamWriter("log.txt", true, Encoding.UTF8))
+                            using (var sw = new StreamWriter("Monitorlog.txt", true, Encoding.UTF8))
                             {
                                 sw.WriteLine($"{DateTime.Now} Завершен процесс {process.Id}: {process.ProcessName} - время жизни {DateTime.Now - process.StartTime}");
                             }
